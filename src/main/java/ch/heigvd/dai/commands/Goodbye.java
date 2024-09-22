@@ -5,23 +5,22 @@ import java.util.concurrent.Callable;
 import picocli.CommandLine;
 
 @CommandLine.Command(
-        name = "goodbye",
-        description = "Print a 'Goodbye World!' type of message.",
-        mixinStandardHelpOptions = true
-)
+    name = "goodbye",
+    description = "Print a 'Goodbye World!' type of message.",
+    mixinStandardHelpOptions = true)
 public class Goodbye implements Callable<Integer> {
 
-    @CommandLine.ParentCommand protected Main parent;
+  @CommandLine.ParentCommand protected Main parent;
 
-    @CommandLine.Option(
-            names = {"-f", "--farewells"},
-            description = "The farewells to address the user (default: Goodbye).",
-            defaultValue = "Goodbye"
-    ) protected String farewells;
+  @CommandLine.Option(
+      names = {"-f", "--farewells"},
+      description = "The farewells to address the user (default: Goodbye).",
+      defaultValue = "Goodbye")
+  protected String farewells;
 
-    @Override
-    public Integer call() {
-        System.out.println(farewells + " " + parent.getName() + "!");
-        return 0;
-    }
+  @Override
+  public Integer call() {
+    System.out.println(farewells + " " + parent.getName() + "!");
+    return 0;
+  }
 }
